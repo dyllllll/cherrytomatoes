@@ -73,19 +73,21 @@
 
     <script>
         function createHeart() {
-            const heart = document.createElement("div");
-            heart.className = "heart";
-            document.querySelector(".hearts-container").appendChild(heart);
+            if (document.querySelectorAll('.heart').length < 20) { // Limit the number of hearts
+                const heart = document.createElement("div");
+                heart.className = "heart";
+                document.querySelector(".hearts-container").appendChild(heart);
 
-            const leftPosition = Math.random() * window.innerWidth + "px";
-            const animationDuration = Math.random() * 2 + 3 + "s";
+                const leftPosition = Math.random() * window.innerWidth + "px";
+                const animationDuration = Math.random() * 2 + 3 + "s";
 
-            heart.style.left = leftPosition;
-            heart.style.animationDuration = animationDuration;
+                heart.style.left = leftPosition;
+                heart.style.animationDuration = animationDuration;
 
-            heart.addEventListener("animationend", () => {
-                heart.remove();
-            });
+                heart.addEventListener("animationend", () => {
+                    heart.remove();
+                });
+            }
         }
 
         setInterval(createHeart, 1000); // Adjust the interval as needed
