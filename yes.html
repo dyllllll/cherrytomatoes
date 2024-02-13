@@ -50,17 +50,17 @@
     function createHeart() {
         const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
         heart.setAttribute("class", "heart");
-        heart.setAttribute("width", "30"); // Adjust the size as needed
-        heart.setAttribute("height", "30"); // Adjust the size as needed
+        heart.setAttribute("width", "24");
+        heart.setAttribute("height", "24");
         document.querySelector(".hearts-container").appendChild(heart);
 
         const heartPath = document.createElementNS("http://www.w3.org/2000/svg", "path");
         heartPath.setAttribute("d", "M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C16.09 3.81 17.76 3 19.5 3 22.58 3 25 5.42 25 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z");
-        heartPath.setAttribute("fill", "#ff69b4");
+        heartPath.setAttribute("fill", "#ff69b4"); // Adjust the heart color as needed
         heart.appendChild(heartPath);
 
         const leftPosition = Math.random() * window.innerWidth + "px";
-        const animationDuration = Math.random() * 4 + 6 + "s"; // Adjust the duration as needed
+        const animationDuration = Math.random() * 2 + 3 + "s";
 
         heart.style.left = leftPosition;
         heart.style.animationDuration = animationDuration;
@@ -70,8 +70,9 @@
         });
     }
 
-    setInterval(createHeart, 1500); // Adjust the interval as needed
+    setInterval(createHeart, 1000); // Adjust the interval as needed
 </script>
+
 
 
 </body>
