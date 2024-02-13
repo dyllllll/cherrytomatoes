@@ -8,22 +8,33 @@
             background-size: cover;
             background-position: center;
             background-repeat: no-repeat;
+            overflow: hidden;
         }
 
         .hearts-container {
-            position: fixed;
+            position: absolute;
             top: 0;
             left: 0;
             width: 100%;
             height: 100%;
             pointer-events: none;
-            z-index: 9999;
         }
 
         .heart {
             position: absolute;
             width: 20px;
             height: 20px;
+            background-color: #ff69b4; /* Adjust the heart color as needed */
+            clip-path: polygon(
+                50% 0%,
+                61% 0%,
+                100% 35%,
+                80% 60%,
+                50% 100%,
+                20% 60%,
+                0% 35%,
+                39% 0%
+            );
             animation: fall 2s linear infinite;
         }
 
@@ -31,39 +42,6 @@
             to {
                 transform: translateY(100vh);
             }
-        }
-
-        .container {
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
-            height: 100vh;
-        }
-
-        .header_text {
-            font-family: 'Nunito';
-            font-size: 50px;
-            font-weight: bold;
-            color: rgb(147, 112, 219);
-            text-align: center;
-            margin-top: 20px;
-            margin-bottom: 0px;
-        }
-
-        .bottom_text {
-            font-family: 'Nunito';
-            font-size: 24px;
-            color: rgb(147, 112, 219);
-            text-align: center;
-            margin-top: 10px;
-            margin-bottom: 20px;
-        }
-
-        .gif_container {
-            display: flex;
-            justify-content: center;
-            align-items: center;
         }
     </style>
 </head>
@@ -78,41 +56,26 @@
         </div>
     </div>
 
-    <div class="hearts-container">
-        <svg class="heart" xmlns="http://www.w3.org/2000/svg" viewBox="0 0 24 24" fill="#ff69b4" width="20px" height="20px">
-            <path d="M12 21.35l-1.45-1.32C6.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C16.09 3.81 17.76 3 19.5 3 22.58 3 25 5.42 25 8.5c0 3.78-4.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>
-    </div>
+    <div class="hearts-container"></div>
 
     <script>
-    function createHeart() {
-        const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-        heart.className = "heart";
-        heart.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-        heart.setAttribute("viewBox", "0 0 24 24");
-        heart.setAttribute("fill", "#ff69b4");
-        heart.setAttribute("width", "20px");
-        heart.setAttribute("height", "20px");
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            document.querySelector(".hearts-container").appendChild(heart);
 
-        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-        path.setAttribute("d", "M12 21.35l-1.45-1.32C6.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C16.09 3.81 17.76 3 19.5 3 22.58 3 25 5.42 25 8.5c0 3.78-4.4 6.86-8.55 11.54L12 21.35z");
+            const leftPosition = Math.random() * window.innerWidth + "px";
+            const animationDuration = Math.random() * 2 + 3 + "s";
 
-        heart.appendChild(path);
-        document.querySelector(".hearts-container").appendChild(heart);
+            heart.style.left = leftPosition;
+            heart.style.animationDuration = animationDuration;
 
-        const leftPosition = Math.random() * window.innerWidth + "px";
-        const animationDuration = Math.random() * 2 + 3 + "s";
+            heart.addEventListener("animationend", () => {
+                heart.remove();
+            });
+        }
 
-        heart.style.left = leftPosition;
-        heart.style.animationDuration = animationDuration;
-
-        heart.addEventListener("animationend", () => {
-            heart.remove();
-        });
-    }
-
-    setInterval(createHeart, 1000); // Adjust the interval as needed
-</script>
-
+        setInterval(createHeart, 1000); // Adjust the interval as needed
+    </script>
 </body>
 </html>
