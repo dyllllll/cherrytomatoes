@@ -1,79 +1,94 @@
 <!DOCTYPE html>
 <html lang="en">
-    <head>
-        <link rel="stylesheet" href="./yes_style.css">
-        <style>
-            body {
-                background-image: url('fwa.jpg');
-                background-size: cover;
-                background-position: center;
-                background-repeat: no-repeat;
-                overflow: hidden;
-            }
+<head>
+    <link rel="stylesheet" href="./yes_style.css">
+    <style>
+        body {
+            background-image: url('fwa.jpg');
+            background-size: cover;
+            background-position: center;
+            background-repeat: no-repeat;
+            overflow: hidden;
+        }
 
-            .hearts-container {
-                position: absolute;
-                top: 0;
-                left: 0;
-                width: 100%;
-                height: 100%;
-                pointer-events: none;
-            }
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
+        }
 
-            .heart {
-                position: absolute;
-                width: 10px;
-                height: 10px;
-                background-color: #ff69b4; /* Adjust the heart color as needed */
-                clip-path: polygon(
-                    50% 0%,
-                    100% 35%,
-                    75% 100%,
-                    50% 70%,
-                    25% 100%,
-                    0% 35%
-                );
-                animation: fall 2s linear infinite;
-            }
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff69b4; /* Adjust the heart color as needed */
+            clip-path: url(#heartShape);
+            animation: fall 2s linear infinite;
+        }
 
-            @keyframes fall {
-                to {
-                    transform: translateY(100vh);
-                }
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
             }
-        </style>
-    </head>
-    <body>
-        <div class="container">
-            <div>
-                <h1 class="header_text">See you soon cutie :)</h1>
-                <p class="bottom_text">I love you sweet <3</p>
-            </div>
-            <div class="gif_container">
-                <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzM4cDYyNDM2MnM5MGs3eTE3OXpwZXBubHI3a255aXFlcTc2MzdpeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Lzg6rodF8j7MQvcNaW/giphy.gif" alt="Cute animated illustration">
-            </div>
+        }
+
+        /* Define a heart shape using SVG */
+        defs {
+            content: "";
+        }
+
+        symbol {
+            overflow: visible;
+        }
+
+        path {
+            fill: #ff69b4; /* Adjust the heart color as needed */
+        }
+    </style>
+</head>
+<body>
+    <div class="container">
+        <div>
+            <h1 class="header_text">See you soon cutie :)</h1>
+            <p class="bottom_text">I love you sweet <3</p>
         </div>
+        <div class="gif_container">
+            <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzM4cDYyNDM2MnM5MGs3eTE3OXpwZXBubHI3a255aXFlcTc2MzdpeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Lzg6rodF8j7MQvcNaW/giphy.gif" alt="Cute animated illustration">
+        </div>
+    </div>
 
-        <div class="hearts-container"></div>
+    <div class="hearts-container"></div>
 
-        <script>
-            function createHeart() {
-                const heart = document.createElement("div");
-                heart.className = "heart";
-                document.querySelector(".hearts-container").appendChild(heart);
+    <!-- SVG heart shape definition -->
+    <svg style="display: none;">
+        <defs>
+            <symbol id="heartShape" viewBox="0 0 24 24">
+                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
+            </symbol>
+        </defs>
+    </svg>
 
-                const leftPosition = Math.random() * window.innerWidth + "px";
-                const animationDuration = Math.random() * 2 + 3 + "s";
+    <script>
+        function createHeart() {
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            document.querySelector(".hearts-container").appendChild(heart);
 
-                heart.style.left = leftPosition;
-                heart.style.animationDuration = animationDuration;
+            const leftPosition = Math.random() * window.innerWidth + "px";
+            const animationDuration = Math.random() * 2 + 3 + "s";
 
-                heart.addEventListener("animationend", () => {
-                    heart.remove();
-                });
-            }
+            heart.style.left = leftPosition;
+            heart.style.animationDuration = animationDuration;
 
-            setInterval(createHeart, 1000); // Adjust the interval as needed
-        </script>
-    </body>
+            heart.addEventListener("animationend", () => {
+                heart.remove();
+            });
+        }
+
+        setInterval(createHeart, 1000); // Adjust the interval as needed
+    </script>
+</body>
 </html>
