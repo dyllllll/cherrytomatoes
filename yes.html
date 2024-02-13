@@ -81,34 +81,23 @@
         </div>
     </div>
 
-    <div class="hearts-container">
-        <svg class="heart" viewBox="0 0 24 24" fill="#ff69b4" width="20px" height="20px">
-            <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C16.09 3.81 17.76 3 19.5 3 22.58 3 25 5.42 25 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-        </svg>
-    </div>
+    <div class="hearts-container"></div>
 
     <script>
-        let heartCount = 0;
-
         function createHeart() {
-            if (heartCount < 20) { // Limit the number of hearts
-                const heart = document.createElement("div");
-                heart.className = "heart";
-                document.querySelector(".hearts-container").appendChild(heart);
+            const heart = document.createElement("div");
+            heart.className = "heart";
+            document.querySelector(".hearts-container").appendChild(heart);
 
-                const leftPosition = Math.random() * window.innerWidth + "px";
-                const animationDuration = Math.random() * 2 + 3 + "s";
+            const leftPosition = Math.random() * window.innerWidth + "px";
+            const animationDuration = Math.random() * 2 + 3 + "s";
 
-                heart.style.left = leftPosition;
-                heart.style.animationDuration = animationDuration;
+            heart.style.left = leftPosition;
+            heart.style.animationDuration = animationDuration;
 
-                heart.addEventListener("animationend", () => {
-                    heart.remove();
-                    heartCount--;
-                });
-
-                heartCount++;
-            }
+            heart.addEventListener("animationend", () => {
+                heart.remove();
+            });
         }
 
         setInterval(createHeart, 1000); // Adjust the interval as needed
