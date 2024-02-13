@@ -25,7 +25,16 @@
             width: 20px;
             height: 20px;
             background-color: #ff69b4; /* Adjust the heart color as needed */
-            clip-path: polygon(50% 0%, 100% 35%, 75% 100%, 50% 70%, 25% 100%, 0% 35%);
+            clip-path: polygon(
+                50% 0%,
+                61% 0%,
+                100% 35%,
+                80% 60%,
+                50% 100%,
+                20% 60%,
+                0% 35%,
+                39% 0%
+            );
             animation: fall 2s linear infinite;
         }
 
@@ -50,8 +59,10 @@
     <div class="hearts-container"></div>
 
     <script>
+        let heartCount = 0;
+
         function createHeart() {
-            if (document.querySelectorAll('.heart').length < 20) { // Limit the number of hearts
+            if (heartCount < 20) { // Limit the number of hearts
                 const heart = document.createElement("div");
                 heart.className = "heart";
                 document.querySelector(".hearts-container").appendChild(heart);
@@ -64,7 +75,10 @@
 
                 heart.addEventListener("animationend", () => {
                     heart.remove();
+                    heartCount--;
                 });
+
+                heartCount++;
             }
         }
 
