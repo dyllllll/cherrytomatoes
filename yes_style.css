@@ -19,5 +19,5 @@ body {
 .gif_container {
     display: flex;
     justify-content: center;
-    align-items: bottom;
+    align-items: center;
 }
