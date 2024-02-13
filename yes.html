@@ -9,6 +9,32 @@
             background-position: center;
             background-repeat: no-repeat;
             overflow: hidden;
+            margin: 0;
+            padding: 0;
+        }
+
+        .container {
+            position: relative;
+            height: 100vh;
+            display: flex;
+            flex-direction: column;
+            justify-content: center;
+            align-items: center;
+        }
+
+        .heart {
+            position: absolute;
+            width: 20px;
+            height: 20px;
+            background-color: #ff69b4; /* Adjust the heart color as needed */
+            clip-path: url(#heartShape);
+            animation: fall 2s linear infinite;
+        }
+
+        @keyframes fall {
+            to {
+                transform: translateY(100vh);
+            }
         }
     </style>
 </head> 
@@ -36,22 +62,5 @@
         <div class="heart"></div>
         <div class="heart"></div>
     </div>
-
-    <style>
-        .heart {
-            position: absolute;
-            width: 20px;
-            height: 20px;
-            background-color: #ff69b4; /* Adjust the heart color as needed */
-            clip-path: url(#heartShape);
-            animation: fall 2s linear infinite;
-        }
-
-        @keyframes fall {
-            to {
-                transform: translateY(100vh);
-            }
-        }
-    </style>
 </body>
 </html>
