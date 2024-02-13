@@ -25,7 +25,7 @@
             width: 20px;
             height: 20px;
             background-color: #ff69b4; /* Adjust the heart color as needed */
-            clip-path: url(#heartShape);
+            clip-path: polygon(50% 0%, 100% 35%, 75% 100%, 50% 70%, 25% 100%, 0% 35%);
             animation: fall 2s linear infinite;
         }
 
@@ -33,19 +33,6 @@
             to {
                 transform: translateY(100vh);
             }
-        }
-
-        /* Define a heart shape using SVG */
-        defs {
-            content: "";
-        }
-
-        symbol {
-            overflow: visible;
-        }
-
-        path {
-            fill: #ff69b4; /* Adjust the heart color as needed */
         }
     </style>
 </head>
@@ -61,15 +48,6 @@
     </div>
 
     <div class="hearts-container"></div>
-
-    <!-- SVG heart shape definition -->
-    <svg style="display: none;">
-        <defs>
-            <symbol id="heartShape" viewBox="0 0 24 24">
-                <path d="M12 21.35l-1.45-1.32C5.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-3.4 6.86-8.55 11.54L12 21.35z"/>
-            </symbol>
-        </defs>
-    </svg>
 
     <script>
         function createHeart() {
