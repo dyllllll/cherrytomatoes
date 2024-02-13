@@ -85,33 +85,34 @@
     </div>
 
     <script>
-        function createHeart() {
-            const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
-            heart.className = "heart";
-            heart.setAttribute("xmlns", "http://www.w3.org/2000/svg");
-            heart.setAttribute("viewBox", "0 0 24 24");
-            heart.setAttribute("fill", "#ff69b4");
-            heart.setAttribute("width", "20px");
-            heart.setAttribute("height", "20px");
+    function createHeart() {
+        const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+        heart.className = "heart";
+        heart.setAttribute("xmlns", "http://www.w3.org/2000/svg");
+        heart.setAttribute("viewBox", "0 0 24 24");
+        heart.setAttribute("fill", "#ff69b4");
+        heart.setAttribute("width", "20px");
+        heart.setAttribute("height", "20px");
 
-            const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
-            path.setAttribute("d", "M12 21.35l-1.45-1.32C6.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C16.09 3.81 17.76 3 19.5 3 22.58 3 25 5.42 25 8.5c0 3.78-4.4 6.86-8.55 11.54L12 21.35z");
+        const path = document.createElementNS("http://www.w3.org/2000/svg", "path");
+        path.setAttribute("d", "M12 21.35l-1.45-1.32C6.4 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C16.09 3.81 17.76 3 19.5 3 22.58 3 25 5.42 25 8.5c0 3.78-4.4 6.86-8.55 11.54L12 21.35z");
 
-            heart.appendChild(path);
-            document.querySelector(".hearts-container").appendChild(heart);
+        heart.appendChild(path);
+        document.querySelector(".hearts-container").appendChild(heart);
 
-            const leftPosition = Math.random() * window.innerWidth + "px";
-            const animationDuration = Math.random() * 2 + 3 + "s";
+        const leftPosition = Math.random() * window.innerWidth + "px";
+        const animationDuration = Math.random() * 2 + 3 + "s";
 
-            heart.style.left = leftPosition;
-            heart.style.animationDuration = animationDuration;
+        heart.style.left = leftPosition;
+        heart.style.animationDuration = animationDuration;
 
-            heart.addEventListener("animationend", () => {
-                heart.remove();
-            });
-        }
+        heart.addEventListener("animationend", () => {
+            heart.remove();
+        });
+    }
 
-        setInterval(createHeart, 1000); // Adjust the interval as needed
-    </script>
+    setInterval(createHeart, 1000); // Adjust the interval as needed
+</script>
+
 </body>
 </html>
