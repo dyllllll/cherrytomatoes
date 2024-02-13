@@ -24,17 +24,6 @@
             position: absolute;
             width: 20px;
             height: 20px;
-            background-color: #ff69b4; /* Adjust the heart color as needed */
-            clip-path: polygon(
-                50% 0%,
-                61% 0%,
-                100% 35%,
-                80% 60%,
-                50% 100%,
-                20% 60%,
-                0% 35%,
-                39% 0%
-            );
             animation: fall 2s linear infinite;
         }
 
@@ -60,8 +49,9 @@
 
     <script>
         function createHeart() {
-            const heart = document.createElement("div");
-            heart.className = "heart";
+            const heart = document.createElementNS("http://www.w3.org/2000/svg", "svg");
+            heart.innerHTML = '<path fill="#ff69b4" d="M12 21.35l-1.45-1.32C6.18 15.36 2 12.28 2 8.5 2 5.42 4.42 3 7.5 3c1.74 0 3.41.81 4.5 2.09C15.09 3.81 16.76 3 18.5 3 21.58 3 24 5.42 24 8.5c0 3.78-4.18 6.86-8.55 11.54L12 21.35z"/>';
+            heart.setAttribute("class", "heart");
             document.querySelector(".hearts-container").appendChild(heart);
 
             const leftPosition = Math.random() * window.innerWidth + "px";
