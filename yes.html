@@ -25,7 +25,16 @@
             width: 20px;
             height: 20px;
             background-color: #ff69b4; /* Adjust the heart color as needed */
-            clip-path: url(#heartShape); /* Reference the heart shape definition */
+            clip-path: polygon(
+                50% 0%,
+                61% 0%,
+                68% 15%,
+                71% 25%,
+                50% 100%,
+                29% 25%,
+                32% 15%,
+                39% 0%
+            );
             animation: fall 2s linear infinite;
         }
 
@@ -49,15 +58,6 @@
             <img src="https://media.giphy.com/media/v1.Y2lkPTc5MGI3NjExYzM4cDYyNDM2MnM5MGs3eTE3OXpwZXBubHI3a255aXFlcTc2MzdpeiZlcD12MV9pbnRlcm5hbF9naWZfYnlfaWQmY3Q9Zw/Lzg6rodF8j7MQvcNaW/giphy.gif" alt="Cute animated illustration">
         </div>
     </div>
-
-    <!-- Define the heart shape -->
-    <svg height="0" width="0">
-        <defs>
-            <clipPath id="heartShape" clipPathUnits="objectBoundingBox">
-                <path d="M0.5 0 L1 1 L0 1 Z" />
-            </clipPath>
-        </defs>
-    </svg>
 
     <div class="hearts-container"></div>
 
