@@ -9,17 +9,15 @@
             background-position: center;
             background-repeat: no-repeat;
             overflow: hidden;
-            margin: 0;
-            padding: 0;
         }
 
-        .container {
-            position: relative;
-            height: 100vh;
-            display: flex;
-            flex-direction: column;
-            justify-content: center;
-            align-items: center;
+        .hearts-container {
+            position: absolute;
+            top: 0;
+            left: 0;
+            width: 100%;
+            height: 100%;
+            pointer-events: none;
         }
 
         .heart {
@@ -27,7 +25,16 @@
             width: 20px;
             height: 20px;
             background-color: #ff69b4; /* Adjust the heart color as needed */
-            clip-path: url(#heartShape);
+            clip-path: polygon(
+                50% 0%,
+                61% 0%,
+                100% 35%,
+                80% 60%,
+                50% 100%,
+                20% 60%,
+                0% 35%,
+                39% 0%
+            );
             animation: fall 2s linear infinite;
         }
 
@@ -37,16 +44,8 @@
             }
         }
     </style>
-</head> 
+</head>
 <body>
-    <svg height="0" xmlns="http://www.w3.org/2000/svg">
-        <defs>
-            <clipPath id="heartShape">
-                <path d="M10 0 C10 0,20 0,20 10 C20 20,10 30,10 30 C10 30,0 20,0 10 C0 0,10 0,10 0" />
-            </clipPath>
-        </defs>
-    </svg>
-
     <div class="container">
         <div>
             <h1 class="header_text">See you soon cutie :)</h1>
@@ -57,10 +56,33 @@
         </div>
     </div>
 
-    <div class="hearts-container">
-        <div class="heart"></div>
-        <div class="heart"></div>
-        <div class="heart"></div>
-    </div>
+    <div class="hearts-container"></div>
+
+    <script>
+        let heartCount = 0;
+
+        function createHeart() {
+            if (heartCount < 20) { // Limit the number of hearts
+                const heart = document.createElement("div");
+                heart.className = "heart";
+                document.querySelector(".hearts-container").appendChild(heart);
+
+                const leftPosition = Math.random() * window.innerWidth + "px";
+                const animationDuration = Math.random() * 2 + 3 + "s";
+
+                heart.style.left = leftPosition;
+                heart.style.animationDuration = animationDuration;
+
+                heart.addEventListener("animationend", () => {
+                    heart.remove();
+                    heartCount--;
+                });
+
+                heartCount++;
+            }
+        }
+
+        setInterval(createHeart, 1000); // Adjust the interval as needed
+    </script>
 </body>
 </html>
