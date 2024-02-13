@@ -48,6 +48,7 @@ body {
     background-color: #ff7b7b;
     clip-path: polygon(50% 0%, 0% 100%, 100% 100%);
     animation: fall 2s linear infinite;
+    transform-origin: 50% 0;
 }
 
 @keyframes fall {
